@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <cstring>
 using namespace std;
 
 struct Book {
@@ -159,3 +160,109 @@ int main() {
 
     return 0;
 }
+
+
+//DZ 2: 
+/* 
+struct Car {
+    string color;
+    string model;
+    union Number {
+        int numeric;
+        char text[9];
+    } number;
+    bool isNumeric;
+};
+
+void fillCar(Car& car) {
+    cout << "Enter car color: ";
+    cin >> car.color;
+    cout << "Enter car model: ";
+    cin >> car.model;
+    cout << "Is the car number numeric (1 for yes, 0 for no)? ";
+    cin >> car.isNumeric;
+    if (car.isNumeric) {
+        cout << "Enter five-digit numeric number: ";
+        cin >> car.number.numeric;
+    }
+    else {
+        cout << "Enter text number (up to 8 characters): ";
+        cin >> car.number.text;
+    }
+}
+
+void printCar(const Car& car) {
+    cout << "Color: " << car.color << ", Model: " << car.model << ", Number: ";
+    if (car.isNumeric)
+        cout << car.number.numeric;
+    else
+        cout << car.number.text;
+    cout << endl;
+}
+
+void editCar(Car& car) {
+    fillCar(car);
+}
+
+void printAllCars(const Car cars[], int size) {
+    for (int i = 0; i < size; ++i) {
+        cout << "Car " << i + 1 << ": ";
+        printCar(cars[i]);
+    }
+}
+
+void searchByNumber(const Car cars[], int size, const string& searchNumber) {
+    for (int i = 0; i < size; ++i) {
+        if ((cars[i].isNumeric && to_string(cars[i].number.numeric) == searchNumber) ||
+            (!cars[i].isNumeric && strcmp(cars[i].number.text, searchNumber.c_str()) == 0)) {
+            cout << "Found Car " << i + 1 << ": ";
+            printCar(cars[i]);
+            return;
+        }
+    }
+    cout << "Car with number " << searchNumber << " not found." << endl;
+}
+
+int main() {
+    const int size = 10;
+    Car cars[size];
+
+    int choice;
+    do {
+        cout << "\n1. Fill a car\n2. Print all cars\n3. Edit a car\n4. Search by number\n0. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1: {
+            int index;
+            cout << "Enter car index (1-" << size << "): ";
+            cin >> index;
+            if (index >= 1 && index <= size) {
+                fillCar(cars[index - 1]);
+            }
+            break;
+        }
+        case 2: printAllCars(cars, size); break;
+        case 3: {
+            int index;
+            cout << "Enter car index to edit (1-" << size << "): ";
+            cin >> index;
+            if (index >= 1 && index <= size) {
+                editCar(cars[index - 1]);
+            }
+            break;
+        }
+        case 4: {
+            string searchNumber;
+            cout << "Enter car number to search: ";
+            cin >> searchNumber;
+            searchByNumber(cars, size, searchNumber);
+            break;
+        }
+        case 0: cout << "Exiting...\n"; break;
+        default: cout << "Invalid choice.\n";
+        }
+    } while (choice != 0);
+}
+*/
